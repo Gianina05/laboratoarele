@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Inversează Alfabetic</title>
+</head>
+<body>
+  <h2>Inversează Alfabetic Literele</h2>
+  <label for="inputText">Introdu textul:</label>
+  <input type="text" id="inputText">
+  <button onclick="inverseazaAlfabetic()">Inversează</button>
+
+  <h3>Rezultat:</h3>
+  <div id="rezultat"></div>
+
+  <script>
+    function inverseazaAlfabetic() {
+      const text = document.getElementById('inputText').value;
+      let rezultat = "";
+
+      for (let char of text) {
+        if (char >= 'a' && char <= 'z') {
+          // litere mici
+          rezultat += String.fromCharCode(219 - char.charCodeAt(0));
+        } else if (char >= 'A' && char <= 'Z') {
+          // litere mari
+          rezultat += String.fromCharCode(155 - char.charCodeAt(0));
+        } else {
+          // orice altceva (spații, cifre, simboluri)
+          rezultat += char;
+        }
+      }
+
+      document.getElementById('rezultat').innerText = rezultat;
+    }
+  </script>
+</body>
+</html>

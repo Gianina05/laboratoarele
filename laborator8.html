@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Fibonacci în interval</title>
+</head>
+<body>
+  <h2>Numere Fibonacci în intervalul [n1, n2]</h2>
+  <label for="n1">n1:</label>
+  <input type="number" id="n1">
+  <label for="n2">n2:</label>
+  <input type="number" id="n2">
+  <button onclick="afiseazaFibonacci()">Afișează</button>
+
+  <h3>Rezultat:</h3>
+  <div id="rezultat"></div>
+
+  <script>
+    function afiseazaFibonacci() {
+      let n1 = parseInt(document.getElementById('n1').value);
+      let n2 = parseInt(document.getElementById('n2').value);
+      let rezultat = document.getElementById('rezultat');
+      rezultat.innerHTML = "";
+
+      if (isNaN(n1) || isNaN(n2)) {
+        rezultat.innerHTML = "Introduceți două numere valide.";
+        return;
+      }
+
+      if (n1 > n2) {
+        [n1, n2] = [n2, n1]; // inversăm dacă n1 > n2
+      }
+
+      let a = 0, b = 1;
+      let lista = [];
+
+      while (a <= n2) {
+        if (a >= n1) {
+          lista.push(a);
+        }
+        [a, b] = [b, a + b];
+      }
+
+      if (lista.length > 0) {
+        rezultat.innerHTML = lista.join(", ");
+      } else {
+        rezultat.innerHTML = "Nu există numere Fibonacci în intervalul dat.";
+      }
+    }
+  </script>
+</body>
+</html>
